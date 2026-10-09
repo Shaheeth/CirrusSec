@@ -1,0 +1,80 @@
+{
+  "account": "NovaTech (synthetic lab account)",
+  "description": "Intentionally vulnerable, fully synthetic environment for defensive security training.",
+  "resources": [
+    {"resource_type": "VPC", "resource_id": "vpc-novatech", "cidr": "10.0.0.0/16"},
+
+    {"resource_type": "SecurityGroup", "resource_id": "web-sg", "vpc": "vpc-novatech",
+     "description": "Web tier security group",
+     "ingress": [
+       {"cidr": "0.0.0.0/0", "protocol": "tcp", "from_port": 22, "to_port": 22},
+       {"cidr": "0.0.0.0/0", "protocol": "tcp", "from_port": 80, "to_port": 80},
+       {"cidr": "0.0.0.0/0", "protocol": "tcp", "from_port": 443, "to_port": 443}
+     ]},
+    {"resource_type": "SecurityGroup", "resource_id": "db-sg", "vpc": "vpc-novatech",
+     "description": "Database security group",
+     "ingress": [
+       {"cidr": "0.0.0.0/0", "protocol": "tcp", "from_port": 5432, "to_port": 5432}
+     ]},
+    {"resource_type": "SecurityGroup", "resource_id": "internal-sg", "vpc": "vpc-novatech",
+     "description": "Internal-only security group",
+     "ingress": [
+       {"cidr": "10.0.0.0/16", "protocol": "-1", "from_port": 0, "to_port": 65535}
+     ]},
+
+    {"resource_type": "EC2", "resource_id": "web-server-01", "public_ip": true,
+     "security_groups": ["web-sg"], "iam_role": "web-server-role", "vpc": "vpc-novatech",
+     "root_volume_encrypted": false, "tags": {"tier": "web", "owner": "platform-team"}},
+    {"resource_type": "EC2", "resource_id": "app-server-01", "public_ip": false,
+     "security_groups": ["internal-sg"], "iam_role": "app-server-role", "vpc": "vpc-novatech",
+     "root_volume_encrypted": true, "tags": {"tier": "app", "owner": "platform-team"}},
+
+    {"resource_type": "S3", "resource_id": "customer-data", "public_access": false,
+     "encrypted": false, "versioning": true, "contains_sensitive_data": true,
+     "data_classification": "confidential"},
+    {"resource_type": "S3", "resource_id": "customer-backups", "public_access": true,
+     "encrypted": true, "versioning": false, "contains_sensitive_data": true,
+     "data_classification": "confidential"},
+    {"resource_type": "S3", "resource_id": "marketing-assets", "public_access": false,
+     "encrypted": true, "versioning": true, "contains_sensitive_data": false,
+     "data_classification": "public"},
+
+    {"resource_type": "IAMRole", "resource_id": "web-server-role",
+     "trusted_service": "ec2.amazonaws.com",
+     "policies": [
+       {"name": "web-s3-full", "statements": [
+         {"effect": "Allow", "actions": ["s3:*"], "resources": ["*"]}
+       ]}
+     ]},
+    {"resource_type": "IAMRole", "resource_id": "app-server-role",
+     "trusted_service": "ec2.amazonaws.com",
+     "policies": [
+       {"name": "app-read-customer-data", "statements": [
+         {"effect": "Allow", "actions": ["s3:GetObject"], "resources": ["arn:aws:s3:::customer-data/*"]}
+       ]}
+     ]},
+
+    {"resource_type": "IAMUser", "resource_id": "dev-user", "console_access": true, "mfa_enabled": false,
+     "access_keys": [{"key_id": "AKIAEXAMPLE0DEVKEY01", "active": true, "last_used_days_ago": 140}],
+     "policies": [
+       {"name": "dev-admin", "statements": [
+         {"effect": "Allow", "actions": ["*"], "resources": ["*"]}
+       ]}
+     ]},
+    {"resource_type": "IAMUser", "resource_id": "alice-analyst", "console_access": true, "mfa_enabled": true,
+     "access_keys": [{"key_id": "AKIAEXAMPLE0ALICE001", "active": true, "last_used_days_ago": 3}],
+     "policies": [
+       {"name": "read-only-marketing", "statements": [
+         {"effect": "Allow", "actions": ["s3:GetObject", "s3:ListBucket"],
+          "resources": ["arn:aws:s3:::marketing-assets", "arn:aws:s3:::marketing-assets/*"]}
+       ]}
+     ]},
+
+    {"resource_type": "RDS", "resource_id": "customers-db", "engine": "postgres",
+     "publicly_accessible": true, "storage_encrypted": false, "security_groups": ["db-sg"],
+     "contains_sensitive_data": true, "data_classification": "confidential"},
+
+    {"resource_type": "CloudTrail", "resource_id": "main-trail", "enabled": false,
+     "multi_region": false, "log_file_validation": false}
+  ]
+}

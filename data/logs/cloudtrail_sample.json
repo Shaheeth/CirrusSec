@@ -1,0 +1,261 @@
+{
+  "events": [
+    {
+      "event_id": "evt-001",
+      "event_time": "2026-09-28T09:02:00+00:00",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "user": "alice-analyst",
+      "source_ip": "203.0.113.10",
+      "user_agent": "console",
+      "resource": "",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-002",
+      "event_time": "2026-09-28T09:15:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "alice-analyst",
+      "source_ip": "203.0.113.10",
+      "user_agent": "console",
+      "resource": "marketing-assets",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-003",
+      "event_time": "2026-09-28T10:40:00+00:00",
+      "event_name": "PutObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "alice-analyst",
+      "source_ip": "203.0.113.10",
+      "user_agent": "console",
+      "resource": "marketing-assets",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-004",
+      "event_time": "2026-09-28T14:05:00+00:00",
+      "event_name": "AssumeRole",
+      "event_source": "sts.amazonaws.com",
+      "user": "app-server-01",
+      "source_ip": "10.0.1.15",
+      "user_agent": "console",
+      "resource": "app-server-role",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-005",
+      "event_time": "2026-09-29T02:10:00+00:00",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "",
+      "error": "Failed authentication",
+      "params": {}
+    },
+    {
+      "event_id": "evt-006",
+      "event_time": "2026-09-29T02:11:00+00:00",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "",
+      "error": "Failed authentication",
+      "params": {}
+    },
+    {
+      "event_id": "evt-007",
+      "event_time": "2026-09-29T02:12:00+00:00",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "",
+      "error": "Failed authentication",
+      "params": {}
+    },
+    {
+      "event_id": "evt-008",
+      "event_time": "2026-09-29T02:13:00+00:00",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "",
+      "error": "Failed authentication",
+      "params": {}
+    },
+    {
+      "event_id": "evt-009",
+      "event_time": "2026-09-29T02:14:00+00:00",
+      "event_name": "ConsoleLogin",
+      "event_source": "signin.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-010",
+      "event_time": "2026-09-29T02:20:00+00:00",
+      "event_name": "CreateUser",
+      "event_source": "iam.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "backup-admin",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-011",
+      "event_time": "2026-09-29T02:21:00+00:00",
+      "event_name": "AttachUserPolicy",
+      "event_source": "iam.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "backup-admin",
+      "error": "",
+      "params": {
+        "policy": "AdministratorAccess"
+      }
+    },
+    {
+      "event_id": "evt-012",
+      "event_time": "2026-09-29T02:22:00+00:00",
+      "event_name": "CreateAccessKey",
+      "event_source": "iam.amazonaws.com",
+      "user": "dev-user",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "backup-admin",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-013",
+      "event_time": "2026-09-29T02:30:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-014",
+      "event_time": "2026-09-29T02:31:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-015",
+      "event_time": "2026-09-29T02:32:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-016",
+      "event_time": "2026-09-29T02:33:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-017",
+      "event_time": "2026-09-29T02:34:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-018",
+      "event_time": "2026-09-29T02:35:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-019",
+      "event_time": "2026-09-29T02:36:00+00:00",
+      "event_name": "GetObject",
+      "event_source": "s3.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "customer-data",
+      "error": "",
+      "params": {}
+    },
+    {
+      "event_id": "evt-020",
+      "event_time": "2026-09-29T02:45:00+00:00",
+      "event_name": "AuthorizeSecurityGroupIngress",
+      "event_source": "ec2.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "db-sg",
+      "error": "",
+      "params": {
+        "cidr": "0.0.0.0/0",
+        "port": 5432
+      }
+    },
+    {
+      "event_id": "evt-021",
+      "event_time": "2026-09-29T02:50:00+00:00",
+      "event_name": "StopLogging",
+      "event_source": "cloudtrail.amazonaws.com",
+      "user": "backup-admin",
+      "source_ip": "198.51.100.77",
+      "user_agent": "console",
+      "resource": "main-trail",
+      "error": "",
+      "params": {}
+    }
+  ]
+}
