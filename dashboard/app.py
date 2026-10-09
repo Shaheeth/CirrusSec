@@ -118,7 +118,11 @@ if "scan" not in st.session_state:
         st.session_state.scan = run_scan()
         db.save_scan(st.session_state.scan)
 
-st.sidebar.image("assets\Glossy Detective Cloud Security Logo.png", use_container_width=True)
+ROOT_DIR = Path(__file__).resolve().parent.parent
+logo_path = ROOT_DIR / "assets" / "Glossy Detective Cloud Security Logo.png"
+
+st.sidebar.image(str(logo_path), width="stretch")
+use_container_width=True)
 st.sidebar.title("CirrusSec")
 page = st.sidebar.radio("Navigate", PAGES)
 if st.sidebar.button("🔄 Re-scan NovaTech demo environment"):
